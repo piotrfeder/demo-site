@@ -1,77 +1,47 @@
-/* $(document).ready(function() {
-	
-	$.fn.scrollHeader = function(fixedClass, scrollStart, scrollEnd ) {
-	var $this = $(this);
-	
-	$(window).scroll(function() {
-	
-		
-		var scrollPos = $(window).scrollTop();
 
-		
-		if(scrollPos > scrollStart )
-		
-			{
-				$this.addClass('fixed').removeClass('nonfixed');
-				
-			}
-			else if(scrollPos < scrollEnd )
-			{
-				$this.removeClass('fixed').addClass('nonfixed');	
-			}
-		
-		});
-	
-	};
-	
-	
-	$('header').scrollHeader('fixed', 0, 0);
-	
-
-} */
-
+// pobieramy header
 let header = document.querySelector('header');
 
-
+// nasluchujemy scrolla
 document.addEventListener('scroll', () => {
-	
+	// gdy pozycja headera jest mniejsza niz pozycja scrolla
 	if( header.scrollTop < window.pageYOffset)
 	{
-		header.classList.add('fixed');
-		
-		
+		// dodajemy klase fixed
+		header.classList.add('fixed');		
 	}
-	
+	// jezeli jest wiekszy
 	else if (header.scrollTop >= window.pageYOffset)
-	
 	{
+		// usuwamy klase fixed
 		header.classList.remove('fixed');
-		
 	}
 	
 	
 })
 
-
+// pobieramy odpowiednie elementy
 let rtlCheck = document.querySelector('#rtl'),
 bodyItem = document.querySelector('body'),
 hamMobile = document.querySelector('.main-hamburger'),
 navi = document.querySelector('nav');
 
+// gdy klikamy na rtl
 rtlCheck.addEventListener('click', () =>
 
 {
+		// dodajemy do body klase rtl
 		bodyItem.classList.toggle('rtl');
-		
-
 
 });
 
-
+// gdy klikamy na hamburgera
 hamMobile.addEventListener('click', () => {
-	
+	// do hamburgera dodajemy klase open
 	hamMobile.classList.toggle('open');
+	// do nav dodajemy show aby pokazac
 	navi.classList.toggle('show');
+	// blokujemy przesuwanie strony pod menu
 	bodyItem.classList.toggle('blocked');
 })
 
@@ -117,8 +87,6 @@ var td = new Vue({
 				this.loading = false;
 				// przypisujemy odpowiedz do postData
 				this.postData = response.body;
-				// logujemy do consoli otrzymane dane
-				console.log(response.body);
 
 			  }, response => {
 				// logujemy error
@@ -135,7 +103,6 @@ var td = new Vue({
 			{
 			this.postData.splice(index,1);
 			this.images.splice(index,1);
-				
 			}
 		},
 		
