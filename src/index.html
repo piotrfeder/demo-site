@@ -1,0 +1,117 @@
+<!doctype html>
+
+<html>
+<head lang="pl">
+<title>Xsolve</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=yes">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+<meta name="HandheldFriendly" content="true">
+<meta name="keywords" lang="pl" content="">
+<meta name="description" lang="pl" content="">
+<meta name="author" content="piotrfeder.pl">
+<meta name="robots" content="follow, index">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Titillium+Web:200,300,400,600,700,900&amp;subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="css/style.min.css">
+
+
+
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  <!-- http://jsonapi.org/schema -->
+</head>
+<body>
+<header>
+	<div class="wrapper flex flex-space-between flex-align-center">
+		<div class="site-logo">
+			<a href="">
+				Header Logo
+			</a>
+		</div>	
+		<nav>
+			<ul>
+				<li class="num-1">Strona 1</li>
+				<li class="num-2">Strona 2</li>
+				<li class="num-3">Strona 3</li>
+			
+			</ul>
+		</nav>
+		<div class="main-hamburger">
+			<div class="main-hamburger-bar first-bar"></div>
+			<div class="main-hamburger-bar second-bar"></div>
+			<div class="main-hamburger-bar third-bar"></div>
+		</div>
+	</div>
+</header>
+
+<div id="posts" class="container">
+	<div class="flex flex-space-between wrapper">
+		<main class="flex flex-space-between">
+			<div v-for="(post, index) in postData" v-if="index <= postIndex" class="user-box">
+				<div class="user-box-top">
+					<div class="delete-user" v-on:click="remove(index)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+				<h1 >{{ post.name }}</h1>
+				<p>{{ post.username }}</p>
+				</div>
+
+				<div class="user-info">
+					<div v-for="(img, index2) in images" v-if="index == index2" class="user-img">
+						<img :src="img.url">
+					</div>
+					<div class="user-info-box">
+						<div class="user-box-info-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+						<a href="">{{ post.email }}</a>
+					</div>
+					<div class="user-info-box">
+						<div class="user-box-info-icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+						<p>{{ post.phone}}</p>
+					</div>
+					<div class="user-info-box">
+						<div class="user-box-info-icon"><i class="fa fa-external-link" aria-hidden="true"></i></div>
+						<a href="">{{ post.website}}</a>
+					</div>
+					<div class="user-info-box">
+						<div class="user-box-info-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+						<p>{{ post.address.street}}
+						{{ post.address.suite}}
+						{{ post.address.city}}
+						{{ post.address.zipcode}}</p>
+					</div>
+				</div>
+				</div>
+<div v-if="loading" class="loading"><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></div>
+
+<div class="more-btn" v-on:click="morePosts()" v-if="postData.length >= (postIndex + 2)">Więcej</div>
+		</main>
+
+		<aside>
+			<h3>Ostatni użytkownicy:</h3>
+	<div  v-for="(postRecent,index) in postData" v-if="index <= 4" class="aside-post-box">
+
+<strong>{{ postRecent.name}}</strong>
+<p>{{ postRecent.address.city }}</p>
+	</div>
+		</aside>
+	</div>
+</div>
+<footer>
+	<p>&copy by PiotrFeder.pl</p>
+</footer>
+
+<div class="rtl-box">
+	<p>Zmień ltr/rtl:</p>
+	<input type="checkbox" id="rtl" name="rtl">
+	<label for="rtl"></div>
+	
+</div>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
+<script src="js/script.min.js"></script>
+</body>
+</html>

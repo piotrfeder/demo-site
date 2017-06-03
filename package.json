@@ -1,0 +1,20 @@
+{
+  "name": "pinjob",
+  "version": "1.0.0",
+  "description": "poinjobin",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "C:/xampp/htdocs/pinjo"
+  },
+  "author": "Piotr Feder",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-uncss": "^1.0.5"
+  }
+}
